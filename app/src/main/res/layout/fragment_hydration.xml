@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.hydration.HydrationFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Back to Home Button -->
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back_to_home"
+                android:src="@drawable/ic_home"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Hydration Tracker"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Circular Progress Bar -->
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/circularProgress"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="24dp"
+                app:indicatorColor="#03A9F4"
+                app:indicatorSize="220dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:trackColor="#E0E0E0"
+                app:trackCornerRadius="12dp"
+                app:trackThickness="16dp"
+                tools:progress="60" />
+
+            <!-- Water Count Display -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/circularProgress"
+                app:layout_constraintEnd_toEndOf="@id/circularProgress"
+                app:layout_constraintStart_toStartOf="@id/circularProgress"
+                app:layout_constraintTop_toTopOf="@id/circularProgress">
+
+                <TextView
+                    android:id="@+id/tvCurrentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#03A9F4"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    tools:text="6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="glasses"
+                    android:textColor="#757575"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Water Control Buttons -->
+            <LinearLayout
+                android:id="@+id/waterControls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/circularProgress">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMinus"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="32dp"
+                    app:strokeColor="#03A9F4" />
+
+                <TextView
+                    android:id="@+id/tvGoalCountLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="Today's Goal"
+                    android:textColor="#03A9F4"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPlus"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#03A9F4"
+                    app:cornerRadius="32dp" />
+            </LinearLayout>
+
+            <!-- Goal Settings -->
+            <LinearLayout
+                android:id="@+id/goalSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/rounded_container"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/waterControls">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Set Daily Goal"
+                    android:textColor="#03A9F4"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDecreaseGoal"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="-"
+                    app:cornerRadius="24dp" />
+
+                <TextView
+                    android:id="@+id/tvDailyGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="#03A9F4"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="10" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnIncreaseGoal"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="+"
+                    app:cornerRadius="24dp" />
+            </LinearLayout>
+
+            <!-- Reminder Settings -->
+            <LinearLayout
+                android:id="@+id/reminderSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/rounded_container"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/goalSettings">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enable Reminders"
+                        android:textColor="#03A9F4"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchReminders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Reminder Interval"
+                    android:textColor="#757575" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderInterval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stepSize="5"
+                    android:value="20"
+                    android:valueFrom="5"
+                    android:valueTo="60"
+                    app:labelBehavior="gone" />
+
+                <TextView
+                    android:id="@+id/tvIntervalValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="#03A9F4"
+                    android:textStyle="bold"
+                    tools:text="20 min" />
+
+                <TextView
+                    android:id="@+id/tvNextReminder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#757575"
+                    android:visibility="gone"
+                    tools:text="Next reminder in 15 minutes"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Login Prompt -->
+    <TextView
+        android:id="@+id/loginPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please log in to track your hydration"
+        android:textColor="#757575"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

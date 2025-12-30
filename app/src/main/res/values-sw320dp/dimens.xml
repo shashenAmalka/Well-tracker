@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dimensions for small screens (sw320dp) - Optimized for compact devices -->
+    
+    <!-- Reduced spacing for small screens -->
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_xlarge">20dp</dimen>
+    <dimen name="spacing_xxlarge">24dp</dimen>
+    
+    <!-- Smaller card padding -->
+    <dimen name="card_padding">12dp</dimen>
+    <dimen name="card_padding_large">16dp</dimen>
+    
+    <!-- Smaller mood emoji for compact screens -->
+    <dimen name="mood_emoji_size">48dp</dimen>
+    <dimen name="mood_emoji_radius">24dp</dimen>
+    <dimen name="mood_emoji_text_size">24sp</dimen>
+    <dimen name="mood_emoji_text_size_large">26sp</dimen>
+    <dimen name="mood_label_text_size">9sp</dimen>
+    <dimen name="mood_item_padding">6dp</dimen>
+    
+    <!-- Compact chart -->
+    <dimen name="chart_height">160dp</dimen>
+    <dimen name="chart_min_height">140dp</dimen>
+    
+    <!-- Smaller text for small screens -->
+    <dimen name="text_size_headline_medium">22sp</dimen>
+    <dimen name="text_size_headline_large">26sp</dimen>
+    
+    <!-- Reduced margins -->
+    <dimen name="screen_margin_horizontal">12dp</dimen>
+    <dimen name="section_margin_bottom">20dp</dimen>
+    
+    <!-- Reduced empty state padding -->
+    <dimen name="empty_state_padding">32dp</dimen>
+</resources>

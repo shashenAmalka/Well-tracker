@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dimensions for large screens (sw600dp+) - Tablets and larger devices -->
+    
+    <!-- Increased spacing for tablets -->
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="spacing_xxlarge">40dp</dimen>
+    
+    <!-- Larger card padding -->
+    <dimen name="card_padding">24dp</dimen>
+    <dimen name="card_padding_large">32dp</dimen>
+    
+    <!-- Larger mood emoji for tablets -->
+    <dimen name="mood_emoji_size">72dp</dimen>
+    <dimen name="mood_emoji_radius">36dp</dimen>
+    <dimen name="mood_emoji_text_size">36sp</dimen>
+    <dimen name="mood_emoji_text_size_large">38sp</dimen>
+    <dimen name="mood_label_text_size">12sp</dimen>
+    <dimen name="mood_item_padding">16dp</dimen>
+    
+    <!-- Larger chart for tablets -->
+    <dimen name="chart_height">280dp</dimen>
+    <dimen name="chart_min_height">240dp</dimen>
+    
+    <!-- Larger text for tablets -->
+    <dimen name="text_size_headline_medium">28sp</dimen>
+    <dimen name="text_size_headline_large">32sp</dimen>
+    
+    <!-- Increased margins -->
+    <dimen name="screen_margin_horizontal">24dp</dimen>
+    <dimen name="section_margin_bottom">32dp</dimen>
+    
+    <!-- Increased empty state padding -->
+    <dimen name="empty_state_padding">56dp</dimen>
+    
+    <!-- Larger list items -->
+    <dimen name="list_item_height">88dp</dimen>
+    <dimen name="list_item_emoji_size">64dp</dimen>
+    <dimen name="list_item_emoji_radius">32dp</dimen>
+</resources>

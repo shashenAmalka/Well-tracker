@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:fillViewport="true"
+    android:scrollbars="vertical">
+
+    <!-- Main Mood Container with Blur Effect -->
+    <FrameLayout
+        android:id="@+id/blur_mood_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#50FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#20FFFFFF"
+            android:paddingStart="@dimen/screen_margin_horizontal"
+            android:paddingEnd="@dimen/screen_margin_horizontal"
+            android:paddingTop="@dimen/screen_margin_vertical"
+            android:paddingBottom="@dimen/screen_margin_vertical">
+
+            <!-- Header Section with Responsive Layout -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/blur_mood_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_xlarge"
+                android:background="#50FFFFFF"
+                android:padding="@dimen/spacing_normal"
+                android:minHeight="@dimen/touch_target_min">
+
+                <LinearLayout
+                    android:id="@+id/header_text_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_add_mood"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mood Journal"
+                        android:textAppearance="@style/TextAppearance.WellTracker.Headline1"
+                        android:textColor="@color/text_primary"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Track your emotional journey"
+                        android:textAppearance="@style/TextAppearance.WellTracker.Body2"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_mood"
+                    style="@style/Button.WellTracker.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:minHeight="@dimen/button_height"
+                    android:minWidth="@dimen/button_height"
+                    android:text="Add"
+                    android:textSize="@dimen/text_size_body"
+                    app:cornerRadius="@dimen/button_corner_radius"
+                    app:icon="@drawable/ic_add"
+                    app:iconSize="@dimen/icon_size_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Today's Mood Card with Responsive Grid -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_margin_bottom"
+            app:cardCornerRadius="@dimen/card_corner_radius_large"
+            app:cardElevation="@dimen/card_elevation_high"
+            app:cardBackgroundColor="@color/surface_card"
+            app:strokeColor="@color/accent_peach_light"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_padding_large">
+
+                <TextView
+                    android:id="@+id/tv_mood_question"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="How are you feeling today?"
+                    android:textAppearance="@style/TextAppearance.WellTracker.Headline2"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText"
+                    />
+
+                <!-- Responsive Mood Selection Grid using Flow -->
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/mood_flow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="mood_ecstatic,mood_happy,mood_neutral,mood_sad,mood_angry"
+                    app:flow_wrapMode="chain"
+                    app:flow_horizontalStyle="spread"
+                    app:flow_verticalGap="@dimen/spacing_small"
+                    app:flow_horizontalGap="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mood_question"
+                    android:layout_marginBottom="@dimen/spacing_large" />
+
+                <!-- Ecstatic -->
+                <LinearLayout
+                    android:id="@+id/mood_ecstatic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/mood_item_padding"
+                    android:minHeight="@dimen/mood_item_min_touch_target"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/mood_emoji_size"
+                        android:layout_height="@dimen/mood_emoji_size"
+                        app:cardCornerRadius="@dimen/mood_emoji_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardBackgroundColor="@color/mood_ecstatic">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="🥳"
+                            android:textSize="@dimen/mood_emoji_text_size_large"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ecstatic"
+                        android:textSize="@dimen/mood_label_text_size"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        tools:ignore="HardcodedText"
+                        />
+
+                </LinearLayout>
+
+                <!-- Happy -->
+                <LinearLayout
+                    android:id="@+id/mood_happy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/mood_item_padding"
+                    android:minHeight="@dimen/mood_item_min_touch_target"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/mood_emoji_size"
+                        android:layout_height="@dimen/mood_emoji_size"
+                        app:cardCornerRadius="@dimen/mood_emoji_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardBackgroundColor="@color/mood_happy">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="😊"
+                            android:textSize="@dimen/mood_emoji_text_size"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Happy"
+                        android:textSize="@dimen/mood_label_text_size"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        tools:ignore="HardcodedText"
+                        />
+
+                </LinearLayout>
+
+                <!-- Neutral -->
+                <LinearLayout
+                    android:id="@+id/mood_neutral"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/mood_item_padding"
+                    android:minHeight="@dimen/mood_item_min_touch_target"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/mood_emoji_size"
+                        android:layout_height="@dimen/mood_emoji_size"
+                        app:cardCornerRadius="@dimen/mood_emoji_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardBackgroundColor="@color/mood_neutral">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="😐"
+                            android:textSize="@dimen/mood_emoji_text_size"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Neutral"
+                        android:textSize="@dimen/mood_label_text_size"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        tools:ignore="HardcodedText"
+                        />
+
+                </LinearLayout>
+
+                <!-- Sad -->
+                <LinearLayout
+                    android:id="@+id/mood_sad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/mood_item_padding"
+                    android:minHeight="@dimen/mood_item_min_touch_target"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/mood_emoji_size"
+                        android:layout_height="@dimen/mood_emoji_size"
+                        app:cardCornerRadius="@dimen/mood_emoji_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardBackgroundColor="@color/mood_sad">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="😢"
+                            android:textSize="@dimen/mood_emoji_text_size"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sad"
+                        android:textSize="@dimen/mood_label_text_size"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        tools:ignore="HardcodedText"
+                        />
+
+                </LinearLayout>
+
+                <!-- Angry -->
+                <LinearLayout
+                    android:id="@+id/mood_angry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/mood_item_padding"
+                    android:minHeight="@dimen/mood_item_min_touch_target"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/mood_emoji_size"
+                        android:layout_height="@dimen/mood_emoji_size"
+                        app:cardCornerRadius="@dimen/mood_emoji_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardBackgroundColor="@color/mood_angry">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="😠"
+                            android:textSize="@dimen/mood_emoji_text_size"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Angry"
+                        android:textSize="@dimen/mood_label_text_size"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        tools:ignore="HardcodedText"
+                        />
+
+                </LinearLayout>
+
+                <!-- Current Mood Display -->
+                <LinearLayout
+                    android:id="@+id/current_mood_section"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@color/surface_secondary"
+                    android:padding="@dimen/spacing_normal"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mood_flow"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today's mood:"
+                        android:textAppearance="@style/TextAppearance.WellTracker.Body2"
+                        android:textColor="@color/text_secondary"
+                        tools:ignore="HardcodedText"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_current_mood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="😊 Happy"
+                        android:textSize="@dimen/text_size_body_large"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        tools:ignore="HardcodedText"
+                        />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+<!--        &lt;!&ndash; Mood Trends Section Header with Responsive Layout - MOVED TO HOME PAGE &ndash;&gt;-->
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="@dimen/spacing_large"-->
+<!--            android:minHeight="@dimen/touch_target_min"-->
+<!--            android:visibility="gone"-->
+<!--            tools:visibility="visible">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_mood_trends_title"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="📊 Mood Trends"-->
+<!--                android:textAppearance="@style/TextAppearance.WellTracker.Headline2"-->
+<!--                android:textColor="@color/text_primary"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/tv_view_all_moods"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                tools:ignore="HardcodedText"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_view_all_moods"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minHeight="@dimen/touch_target_min"-->
+<!--                android:text="View All"-->
+<!--                android:textSize="@dimen/text_size_body"-->
+<!--                android:textColor="@color/accent_peach_dark"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:paddingStart="@dimen/spacing_medium"-->
+<!--                android:paddingEnd="@dimen/spacing_medium"-->
+<!--                android:background="?android:attr/selectableItemBackground"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                tools:ignore="HardcodedText,RtlSymmetry" />-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--         Circular Day Selectors Row - MOVED TO HOME PAGE -->
+<!--        <HorizontalScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="@dimen/spacing_large"-->
+<!--            android:scrollbars="none"-->
+<!--            android:fillViewport="false"-->
+<!--            android:visibility="gone"-->
+<!--            tools:visibility="visible">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingStart="@dimen/spacing_small"-->
+<!--                android:paddingEnd="@dimen/spacing_small">-->
+
+<!--                &lt;!&ndash; Monday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_monday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Mon"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_monday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="😊"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Tuesday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_tuesday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tue"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_tuesday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="😐"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Wednesday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_wednesday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Wed"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_wednesday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="😊"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Thursday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_thursday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Thu"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_thursday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="😐"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Friday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_friday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Fri"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_friday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="😊"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Saturday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_saturday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Sat"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_saturday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="😐"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Sunday &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/day_sunday"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:background="@drawable/bg_circular_day_selector"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:elevation="2dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Sun"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="@color/text_secondary"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/emoji_sunday"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="🥳"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--        </HorizontalScrollView>-->
+
+<!--        &lt;!&ndash; Mood Trends Chart Card with Rounded Design - MOVED TO HOME PAGE &ndash;&gt;-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/card_mood_chart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="@dimen/section_margin_bottom"-->
+<!--            app:cardCornerRadius="24dp"-->
+<!--            app:cardElevation="4dp"-->
+<!--            app:cardBackgroundColor="@color/surface_card"-->
+<!--            app:strokeColor="@color/accent_purple_light"-->
+<!--            app:strokeWidth="2dp"-->
+<!--            android:visibility="gone"-->
+<!--            tools:visibility="visible">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/bg_mood_card_gradient"-->
+<!--                android:padding="@dimen/card_padding_large">-->
+
+<!--                &lt;!&ndash; Header with Badge &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/chart_header"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_weekly_overview"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="📈 Weekly Overview"-->
+<!--                        android:textAppearance="@style/TextAppearance.WellTracker.Headline3"-->
+<!--                        android:textColor="@color/text_primary"-->
+<!--                        android:textStyle="bold"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    &lt;!&ndash; Best Mood Badge &ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/best_mood_badge"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/bg_best_mood_badge"-->
+<!--                        android:paddingStart="12dp"-->
+<!--                        android:paddingEnd="12dp"-->
+<!--                        android:paddingTop="6dp"-->
+<!--                        android:paddingBottom="6dp"-->
+<!--                        android:elevation="2dp">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="👑"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:layout_marginEnd="4dp"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_best_day"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Sunday"-->
+<!--                            android:textSize="12sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#D4AF37"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Chart Container with Rounded Background &ndash;&gt;-->
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/mood_chart_container"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="280dp"-->
+<!--                    android:layout_marginTop="@dimen/spacing_large"-->
+<!--                    android:layout_marginBottom="@dimen/spacing_normal"-->
+<!--                    android:background="@drawable/bg_mood_chart_rounded"-->
+<!--                    android:padding="12dp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/chart_header">-->
+
+<!--                    &lt;!&ndash; Bar Chart with trend line &ndash;&gt;-->
+<!--                    <com.github.mikephil.charting.charts.CombinedChart-->
+<!--                        android:id="@+id/mood_bar_chart"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:visibility="gone"-->
+<!--                        tools:visibility="visible" />-->
+
+<!--                    &lt;!&ndash; Keep placeholder for empty state &ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/chart_placeholder"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:visibility="visible"-->
+<!--                        tools:visibility="gone">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="📊"-->
+<!--                            android:textSize="48sp"-->
+<!--                            android:layout_marginBottom="@dimen/spacing_small"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Track your mood for 7 days\nto see weekly patterns"-->
+<!--                            android:textSize="@dimen/text_size_body"-->
+<!--                            android:textColor="@color/text_secondary"-->
+<!--                            android:gravity="center"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </FrameLayout>-->
+
+<!--                &lt;!&ndash; Pattern Insights with Icon &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/pattern_insight_container"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:gravity="center"-->
+<!--                    android:background="@drawable/bg_stat_card_rounded"-->
+<!--                    android:padding="12dp"-->
+<!--                    android:layout_marginTop="@dimen/spacing_normal"-->
+<!--                    android:visibility="gone"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/mood_chart_container"-->
+<!--                    tools:visibility="visible">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="💡"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:layout_marginEnd="8dp"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_pattern_insight"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="Best mood on Sunday • 15% improvement from last week"-->
+<!--                        android:textSize="@dimen/text_size_body"-->
+<!--                        android:textColor="@color/accent_purple"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                &lt;!&ndash; Quick Stats Grid with Rounded Cards &ndash;&gt;-->
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/stats_container"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/pattern_insight_container"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    android:layout_marginTop="@dimen/spacing_large">-->
+
+<!--                    &lt;!&ndash; Most Common Mood &ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/stat_most_common"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:background="@drawable/bg_stat_card_rounded"-->
+<!--                        android:elevation="2dp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/stat_total"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:layout_marginEnd="8dp">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_most_common_emoji"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="😊"-->
+<!--                            android:textSize="32sp"-->
+<!--                            android:layout_marginBottom="8dp"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Most Common"-->
+<!--                            android:textSize="11sp"-->
+<!--                            android:textColor="@color/text_secondary"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    &lt;!&ndash; Total Entries &ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/stat_total"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:background="@drawable/bg_stat_card_rounded"-->
+<!--                        android:elevation="2dp"-->
+<!--                        app:layout_constraintStart_toEndOf="@id/stat_most_common"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/stat_streak"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:layout_marginEnd="8dp">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_total_entries"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="7"-->
+<!--                            android:textSize="32sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="@color/text_primary"-->
+<!--                            android:layout_marginBottom="8dp"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Entries"-->
+<!--                            android:textSize="11sp"-->
+<!--                            android:textColor="@color/text_secondary"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    &lt;!&ndash; Current Streak &ndash;&gt;-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/stat_streak"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:background="@drawable/bg_stat_card_rounded"-->
+<!--                        android:elevation="2dp"-->
+<!--                        app:layout_constraintStart_toEndOf="@id/stat_total"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_mood_streak"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="🔥 3"-->
+<!--                            android:textSize="28sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginBottom="8dp"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Day Streak"-->
+<!--                            android:textSize="11sp"-->
+<!--                            android:textColor="@color/text_secondary"-->
+<!--                            tools:ignore="HardcodedText" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+        <!-- Mood History Header with Responsive Layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:minHeight="@dimen/touch_target_min">
+
+            <TextView
+                android:id="@+id/tv_recent_moods_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Recent Moods"
+                android:textAppearance="@style/TextAppearance.WellTracker.Headline3"
+                android:textColor="@color/text_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_mood_count"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="HardcodedText"
+                />
+
+            <TextView
+                android:id="@+id/tv_mood_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 entries"
+                android:textSize="@dimen/text_size_caption"
+                android:textColor="@color/text_secondary"
+                android:paddingStart="@dimen/spacing_medium"
+                android:paddingEnd="@dimen/spacing_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="HardcodedText,RtlSymmetry"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Empty State for Mood History with Responsive Layout -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/empty_state_moods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_margin_bottom"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/card_corner_radius_large"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/surface_card"
+            app:strokeColor="@color/accent_purple_light"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/empty_state_padding">
+
+                <TextView
+                    android:id="@+id/empty_state_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📝"
+                    android:textSize="@dimen/empty_state_icon_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="@dimen/spacing_normal"
+                    tools:ignore="HardcodedText"
+                    />
+
+                <TextView
+                    android:id="@+id/empty_state_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="No Mood Entries Yet"
+                    android:textAppearance="@style/TextAppearance.WellTracker.Headline2"
+                    android:textColor="@color/text_primary"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/empty_state_icon"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    tools:ignore="HardcodedText"
+                    />
+
+                <TextView
+                    android:id="@+id/empty_state_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Start tracking your emotional journey by adding your first mood entry"
+                    android:textSize="@dimen/text_size_body"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/empty_state_title"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    android:paddingStart="@dimen/spacing_normal"
+                    android:paddingEnd="@dimen/spacing_normal"
+                    tools:ignore="HardcodedText,RtlSymmetry"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_first_mood"
+                    style="@style/Button.WellTracker.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:minHeight="@dimen/button_height"
+                    android:text="Add Your First Mood"
+                    android:textSize="@dimen/text_size_body"
+                    app:cornerRadius="@dimen/button_corner_radius"
+                    app:icon="@drawable/ic_add"
+                    app:iconSize="@dimen/icon_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/empty_state_description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="HardcodedText"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Mood History RecyclerView with Responsive Container -->
+        <FrameLayout
+            android:id="@+id/mood_history_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_margin_bottom">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_moods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_mood"
+                tools:itemCount="3"
+                />
+
+        </FrameLayout>
+
+            <!-- Insights Card with Responsive Layout -->
+            <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            app:cardCornerRadius="@dimen/card_corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/secondary_green_light"
+            app:strokeColor="@color/secondary_green"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_padding_large">
+
+                <TextView
+                    android:id="@+id/insight_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💡"
+                    android:textSize="@dimen/icon_size_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="@dimen/spacing_normal"
+                    tools:ignore="HardcodedText"
+                    />
+
+                <TextView
+                    android:id="@+id/insight_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Weekly Insight"
+                    android:textSize="@dimen/text_size_body_large"
+                    android:textStyle="bold"
+                    android:textColor="@color/secondary_green_dark"
+                    app:layout_constraintStart_toEndOf="@id/insight_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_mood_insight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="You've been feeling great this week! Your mood improved by 20% compared to last week."
+                    android:textSize="@dimen/text_size_body"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    app:layout_constraintStart_toEndOf="@id/insight_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/insight_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="HardcodedText"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</ScrollView>

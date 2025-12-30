@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/surface_card"
+    app:strokeColor="@color/primary_blue_light"
+    app:strokeWidth="1dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <!-- Green accent border for completed habits -->
+    <View
+        android:id="@+id/accent_border"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:background="@color/secondary_green"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Habit Icon -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/primary_blue_light">
+
+                <ImageView
+                    android:id="@+id/iv_habit_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_habit"
+                    app:tint="@color/primary_blue" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Habit Info -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_habit_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Morning Meditation"
+                    android:textAppearance="@style/TextAppearance.WellTracker.Body1"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tv_habit_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15 minutes daily"
+                    android:textAppearance="@style/TextAppearance.WellTracker.Body2"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+            <!-- Completion Status with Green Checkmark -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_complete_status"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/secondary_green_light">
+
+                <ImageView
+                    android:id="@+id/iv_complete"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_check_circle"
+                    app:tint="@color/secondary_green" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Delete Button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_delete"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/accent_peach_light">
+
+                <ImageView
+                    android:id="@+id/iv_delete"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_delete"
+                    app:tint="@color/accent_peach_dark" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

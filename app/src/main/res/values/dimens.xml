@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base dimensions for mood tracking UI - Default (Normal screens) -->
+    
+    <!-- Spacing -->
+    <dimen name="spacing_tiny">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+    <dimen name="spacing_large">20dp</dimen>
+    <dimen name="spacing_xlarge">24dp</dimen>
+    <dimen name="spacing_xxlarge">32dp</dimen>
+    
+    <!-- Card dimensions -->
+    <dimen name="card_corner_radius_small">12dp</dimen>
+    <dimen name="card_corner_radius_medium">16dp</dimen>
+    <dimen name="card_corner_radius_large">20dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_elevation_high">8dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_padding_large">20dp</dimen>
+    
+    <!-- Mood emoji sizes -->
+    <dimen name="mood_emoji_size">56dp</dimen>
+    <dimen name="mood_emoji_radius">28dp</dimen>
+    <dimen name="mood_emoji_text_size">28sp</dimen>
+    <dimen name="mood_emoji_text_size_large">30sp</dimen>
+    <dimen name="mood_label_text_size">10sp</dimen>
+    <dimen name="mood_item_padding">8dp</dimen>
+    <dimen name="mood_item_min_touch_target">48dp</dimen>
+    
+    <!-- Button dimensions -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_height_large">56dp</dimen>
+    <dimen name="button_corner_radius">24dp</dimen>
+    <dimen name="button_padding_horizontal">16dp</dimen>
+    <dimen name="button_padding_vertical">12dp</dimen>
+    <dimen name="icon_size_small">18dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    
+    <!-- Chart dimensions -->
+    <dimen name="chart_height">200dp</dimen>
+    <dimen name="chart_min_height">180dp</dimen>
+    
+    <!-- List item dimensions -->
+    <dimen name="list_item_height">72dp</dimen>
+    <dimen name="list_item_emoji_size">48dp</dimen>
+    <dimen name="list_item_emoji_radius">24dp</dimen>
+    
+    <!-- Text sizes -->
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_body_large">16sp</dimen>
+    <dimen name="text_size_headline_small">20sp</dimen>
+    <dimen name="text_size_headline_medium">24sp</dimen>
+    <dimen name="text_size_headline_large">28sp</dimen>
+    
+    <!-- Container margins -->
+    <dimen name="screen_margin_horizontal">16dp</dimen>
+    <dimen name="screen_margin_vertical">16dp</dimen>
+    <dimen name="section_margin_bottom">24dp</dimen>
+    
+    <!-- Touch target minimum -->
+    <dimen name="touch_target_min">48dp</dimen>
+    
+    <!-- Empty state -->
+    <dimen name="empty_state_icon_size">64sp</dimen>
+    <dimen name="empty_state_padding">40dp</dimen>
+</resources>
